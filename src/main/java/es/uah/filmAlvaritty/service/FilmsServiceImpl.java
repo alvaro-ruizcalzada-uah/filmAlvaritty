@@ -35,7 +35,7 @@ public class FilmsServiceImpl implements IFilmsService {
 
     @Override
     public boolean saveFilm(Film film) {
-        if (filmsDAO.findFilmById(film.getId()) != null) {
+        if (filmsDAO.findFilmById(film.getId()) == null) {
             filmsDAO.saveFilm(film);
             return true;
         }
