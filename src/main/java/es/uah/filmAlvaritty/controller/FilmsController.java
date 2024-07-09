@@ -34,6 +34,11 @@ public class FilmsController {
     public List<Film> findFilmsByGenre(@PathVariable("genre") String genre) {
         return filmsService.findFilmsByGenre(genre);
     }
+
+    @GetMapping("/films/actor/{actor}")
+    public List<Film> findFilmsByCast(@PathVariable("actor") String actor) {
+        return filmsService.findFilmsByCast(actor);
+    }
     
     @PostMapping(value = "/films", produces = MediaType.TEXT_PLAIN_VALUE)
     public String saveFilm(@RequestBody Film film) {

@@ -35,6 +35,9 @@ public class FilmsDAOImpl implements IFilmsDAO{
     }
 
     @Override
+    public List<Film> findFilmsByCast(String actor)  { return filmsJPA.findByCast_NameContaining(actor); }
+
+    @Override
     public void saveFilm(Film film) {
         filmsJPA.save(film);
     }

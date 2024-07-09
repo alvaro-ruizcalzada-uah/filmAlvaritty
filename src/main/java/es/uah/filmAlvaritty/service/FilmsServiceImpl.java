@@ -34,6 +34,11 @@ public class FilmsServiceImpl implements IFilmsService {
     }
 
     @Override
+    public List<Film> findFilmsByCast(String actor) {
+        return filmsDAO.findFilmsByCast(actor);
+    }
+
+    @Override
     public boolean saveFilm(Film film) {
         if (filmsDAO.findFilmById(film.getId()) == null) {
             filmsDAO.saveFilm(film);

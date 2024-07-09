@@ -1,8 +1,10 @@
 package es.uah.filmAlvaritty.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -34,8 +36,12 @@ public class Film {
     @Column(name = "synopsis")
     private String synopsis;
     @Basic
+    @Lob
     @Column(name = "poster")
     private byte[] poster;
+    @ManyToMany(mappedBy = "filmography")
+    @JsonIgnoreProperties("filmography")
+    private List<Actor> cast;
 
     public Integer getId() {
         return idFilm;
@@ -108,6 +114,24 @@ public class Film {
     public void setPoster(byte[] poster) {
         this.poster = poster;
     }
+
+    public List<Actor> getCast() {
+        return cast;
+    }
+    public void setCast(List<Actor> cast) {
+        this.cast = cast;
+    }
+    public void addActor(Actor actor) {
+        if (actor != null) {
+            getCast().add(actor);
+        }
+    }
+    public void removeActor(Actor actor) {
+        if (actor != null) {
+            getCast().remove(actor);
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -10,6 +10,7 @@ public interface IFilmsService {
     Film findFilmById(Integer idFilm);
     List<Film> findFilmsByTitle(String title);
     List<Film> findFilmsByGenre(String genre);
+    List<Film> findFilmsByCast(String actor);
     boolean saveFilm(Film film);
     boolean deleteFilm(Integer idFilm);
     void updateFilm(Film film);

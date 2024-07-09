@@ -8,4 +8,5 @@ import java.util.List;
 public interface IFilmsJPA extends JpaRepository<Film, Integer> {
     List<Film> findByTitleContainingIgnoreCase(String title);
     List<Film> findByGenreContainingIgnoreCase(String genre);
+    List<Film> findByCast_NameContaining(String actor);
 }
