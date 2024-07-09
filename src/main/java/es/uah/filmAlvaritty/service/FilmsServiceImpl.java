@@ -1,6 +1,7 @@
 package es.uah.filmAlvaritty.service;
 
 import es.uah.filmAlvaritty.dao.IFilmsDAO;
+import es.uah.filmAlvaritty.model.Actor;
 import es.uah.filmAlvaritty.model.Film;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,12 @@ public class FilmsServiceImpl implements IFilmsService {
 
     @Override
     public boolean deleteFilm(Integer idFilm) {
-        if (filmsDAO.findFilmById(idFilm) != null) {
+        Film film = filmsDAO.findFilmById(idFilm);
+        if (film.getId() != null) {
+            for (Actor actor : film.getCast()) {
+                actor.getFilmography().remove(film);
+            }
+            film.getCast().clear();
             filmsDAO.deleteFilm(idFilm);
             return true;
         }
