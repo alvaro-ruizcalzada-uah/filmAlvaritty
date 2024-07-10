@@ -10,7 +10,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api")
 public class FilmsController {
 
     private IFilmsService filmsService;
